@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 - Origem da Vida | Palácio da Biologia</title>
+    
+    <meta name="theme-color" content="#0a1f0a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ========== CÓDIGO CSS IDÊNTICO AO ORIGINAL ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0a1f0a;
+            color: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            padding: 20px 0;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(15, 75, 15, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(30, 120, 30, 0.15) 0%, transparent 20%),
+                linear-gradient(to bottom, #0a1f0a, #0f2a0f);
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1400px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            width: 100%;
+            position: relative;
+        }
+
+        .title {
+            font-size: 3rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            animation: titleGlow 8s infinite ease-in-out;
+            color: #c8f7c5;
+            text-shadow: 0 0 10px rgba(200, 247, 197, 0.3);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c8f7c5, transparent);
+        }
+
+        @keyframes titleGlow {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(200, 247, 197, 0.3);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(200, 247, 197, 0.6);
+            }
+        }
+
+        .scrolling-text-container {
+            width: 100%;
+            overflow: hidden;
+            margin: 20px 0 30px;
+            height: 30px;
+            position: relative;
+        }
+
+        .scrolling-text {
+            font-size: 0.9rem;
+            color: rgba(168, 216, 165, 0.7);
+            white-space: nowrap;
+            position: absolute;
+            animation: scrollText 25s linear infinite;
+        }
+
+        @keyframes scrollText {
+            0% {
+                left: 100%;
+            }
+            100% {
+                left: -100%;
+            }
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #1a3a1a, #0f2a0f);
+            color: #e0f0e0;
+            border: 1px solid #2a5a2a;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-align: center;
+            font-weight: 500;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 180px;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            border-color: #3a7a3a;
+            background: linear-gradient(135deg, #2a5a2a, #1a4a1a);
+        }
+
+        .btn-home {
+            background: linear-gradient(135deg, #2a5a2a, #1a4a1a);
+            border-color: #3a7a3a;
+        }
+
+        .btn-index {
+            background: linear-gradient(135deg, #1a3a1a, #0f2a0f);
+        }
+
+        /* ========== CONTEÚDO DO CAPÍTULO 01 ========== */
+        .chapter-content {
+            background: linear-gradient(135deg, #0f2a0f, #0a1f0a);
+            width: 100%;
+            max-width: 1000px;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            border: 1px solid #2a5a2a;
+            margin: 20px 0 40px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #2a5a2a;
+        }
+
+        .chapter-title {
+            font-size: 2.2rem;
+            color: #c8f7c5;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .chapter-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .chapter-subtitle {
+            font-size: 1.3rem;
+            color: #a8d8a8;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        /* ESTILOS PARA CONTEÚDO DO CAPÍTULO - PRESERVANDO SUBTÓPICOS DO ORIGINAL */
+        .content-section {
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(26, 58, 26, 0.2);
+            border-radius: 10px;
+            border-left: 4px solid #3a7a3a;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            color: #c8f7c5;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .section-content {
+            color: #d0e8d0;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .section-content ul, .section-content ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .section-content li {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            color: #c8f7c5;
+            font-weight: 500;
+            background: rgba(42, 90, 42, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* ESTILOS PARA SUBTÓPICOS - IDÊNTICOS AO ORIGINAL */
+        .subtopics-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+            padding: 20px;
+        }
+
+        .subtopic-card {
+            background: linear-gradient(135deg, #1a3a1a, #0f2a0f);
+            border: 1px solid #2a5a2a;
+            border-radius: 12px;
+            padding: 25px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 160px;
+        }
+
+        .subtopic-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            border-color: #3a7a3a;
+            background: linear-gradient(135deg, #2a5a2a, #1a4a1a);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(200, 247, 197, 0.3);
+        }
+
+        .subtopic-icon {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: #c8f7c5;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 8px rgba(200, 247, 197, 0.4));
+        }
+
+        .subtopic-card:hover .subtopic-icon {
+            transform: scale(1.2);
+            color: #e8ffe5;
+        }
+
+        .subtopic-title {
+            font-size: 1.1rem;
+            color: #e0f0e0;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .subtopic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(200, 247, 197, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .subtopic-card:hover::before {
+            left: 100%;
+        }
+
+        /* ESTILOS PARA PENSADORES - IDÊNTICOS AO ORIGINAL */
+        .pensadores-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .pensador-card {
+            background: linear-gradient(135deg, #1a3a1a, #0f2a0f);
+            border: 1px solid #2a5a2a;
+            border-radius: 10px;
+            padding: 20px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pensador-card:hover {
+            border-color: #3a7a3a;
+            background: linear-gradient(135deg, #2a5a2a, #1a4a1a);
+            transform: translateY(-3px);
+        }
+
+        .pensador-icon {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #c8f7c5;
+        }
+
+        .pensador-name {
+            font-size: 0.95rem;
+            color: #e0f0e0;
+            font-weight: 500;
+        }
+
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #5a8a5a;
+            font-size: 1rem;
+            width: 100%;
+            padding: 20px;
+            border-top: 1px solid #1a3a1a;
+        }
+
+        .signature {
+            font-size: 1.2rem;
+            color: #7aa87a;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Responsive - IDÊNTICO AO ORIGINAL */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.2rem;
+            }
+            
+            .chapter-content {
+                padding: 30px 20px;
+            }
+            
+            .chapter-title {
+                font-size: 1.8rem;
+            }
+            
+            .subtopics-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                padding: 15px;
+            }
+            
+            .subtopic-card {
+                min-height: 140px;
+                padding: 20px 10px;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.8rem;
+            }
+            
+            .chapter-content {
+                padding: 20px 15px;
+            }
+            
+            .chapter-title {
+                font-size: 1.5rem;
+            }
+            
+            .chapter-icon {
+                font-size: 3rem;
+            }
+            
+            .subtopics-container {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .subtopic-card {
+                min-height: 130px;
+                padding: 18px 10px;
+            }
+            
+            .pensadores-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Palácio da Biologia</h1>
+            
+            <div class="scrolling-text-container">
+                <div class="scrolling-text">Capítulo 01 - Origem da Vida. By sr71n3</div>
+            </div>
+        </header>
+        
+        <!-- BOTÕES DE NAVEGAÇÃO SUPERIOR -->
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-btn btn-home">
+                <i class="fas fa-home"></i> Capa Principal
+            </a>
+            <a href="capitulo-00.html" class="nav-btn">
+                <i class="fas fa-arrow-left"></i> Capítulo 00
+            </a>
+            <a href="capitulo-02.html" class="nav-btn">
+                Capítulo 02 <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        
+        <div class="chapter-content">
+            <div class="chapter-header">
+                <div class="chapter-icon">🌋</div>
+                <h2 class="chapter-title">01 – Origem da Vida</h2>
+                <p class="chapter-subtitle">Teorias e Hipóteses sobre o surgimento da vida na Terra</p>
+            </div>
+            
+            <div class="content-section">
+                <h3 class="section-title"><i class="fas fa-atom"></i> Visão Geral</h3>
+                <div class="section-content">
+                    <p>A questão sobre a <span class="highlight">origem da vida</span> é uma das mais fascinantes e complexas da Biologia. Este capítulo explora as principais teorias e hipóteses científicas sobre como a vida surgiu em nosso planeta há aproximadamente 3,8 bilhões de anos.</p>
+                    
+                    <p><strong>Principais abordagens estudadas:</strong></p>
+                    <ul>
+                        <li>Teorias históricas e mitológicas</li>
+                        <li>A teoria da evolução química (Oparin-Haldane)</li>
+                        <li>Experimentos que comprovam hipóteses científicas</li>
+                        <li>Hipóteses alternativas e contemporâneas</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- SUBTÓPICOS - IDÊNTICOS AO ORIGINAL -->
+            <div class="content-section">
+                <h3 class="section-title"><i class="fas fa-sitemap"></i> Subtópicos</h3>
+                <div class="section-content">
+                    <p>Este capítulo está organizado nos seguintes subtópicos:</p>
+                    
+                    <div class="subtopics-container" id="subtopicsContainer">
+                        <!-- Subtópicos serão gerados via JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CONTEÚDO DOS SUBTÓPICOS -->
+            <div class="content-section" data-section="big-bang">
+                <h3 class="section-title"><i class="fas fa-biohazard"></i> Big Bang e Contexto Cósmico</h3>
+                <div class="section-content">
+                    <p>O <span class="highlight">Big Bang</span>, ocorrido há aproximadamente 13,8 bilhões de anos, marcou o início do universo como conhecemos. Para compreender a origem da vida, é essencial entender o contexto cósmico:</p>
+                    
+                    <ul>
+                        <li><strong>Formação dos elementos:</strong> Nos primeiros minutos após o Big Bang, formaram-se hidrogênio, hélio e traços de lítio</li>
+                        <li><strong>Formação das estrelas e planetas:</strong> Elementos mais pesados surgiram nas estrelas e foram dispersos por supernovas</li>
+                        <li><strong>Formação do Sistema Solar:</strong> Há cerca de 4,6 bilhões de anos</li>
+                        <li><strong>Condições iniciais da Terra:</strong> Atmosfera redutora, temperaturas extremas e intensa atividade vulcânica</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- PENSADORES - IDÊNTICO AO ORIGINAL -->
+            <div class="content-section" data-section="pensadores">
+                <h3 class="section-title"><i class="fas fa-users"></i> Principais Pensadores</h3>
+                <div class="section-content">
+                    <p>Diversos cientistas contribuíram para nossa compreensão sobre a origem da vida:</p>
+                    
+                    <div class="pensadores-container" id="pensadoresContainer">
+                        <!-- Pensadores serão gerados via JavaScript -->
+                    </div>
+                    
+                    <div style="margin-top: 25px; padding: 15px; background: rgba(42, 90, 42, 0.2); border-radius: 8px;">
+                        <p><strong>Linha do tempo das principais contribuições:</strong></p>
+                        <ul>
+                            <li><strong>Século IV a.C.:</strong> Aristóteles propõe a geração espontânea</li>
+                            <li><strong>1668:</strong> Francesco Redi contesta a geração espontânea</li>
+                            <li><strong>1862:</strong> Louis Pasteur refuta definitivamente a abiogênese</li>
+                            <li><strong>1924:</strong> Alexander Oparin propõe a evolução química</li>
+                            <li><strong>1953:</strong> Stanley Miller realiza seu experimento histórico</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-section" data-section="teoria-evolucao-quimica">
+                <h3 class="section-title"><i class="fas fa-flask"></i> Teoria da Evolução Química (Oparin-Haldane)</h3>
+                <div class="section-content">
+                    <p>Proposta independentemente por <span class="highlight">Alexander Oparin</span> (1924) e <span class="highlight">J.B.S. Haldane</span> (1929), esta é a teoria mais aceita atualmente sobre a origem da vida:</p>
+                    
+                    <p><strong>Principais estágios:</strong></p>
+                    <ol>
+                        <li><strong>Formação da Terra primitiva:</strong> Atmosfera redutora (CH₄, NH₃, H₂, H₂O)</li>
+                        <li><strong>Síntese de moléculas orgânicas simples:</strong> Aminoácidos, açúcares, bases nitrogenadas</li>
+                        <li><strong>Formação de polímeros:</strong> Proteínas e ácidos nucleicos</li>
+                        <li><strong>Formação de coacervados:</strong> Aglomerados moleculares com propriedades primitivas de vida</li>
+                        <li><strong>Aparecimento da membrana plasmática:</strong> Isolamento do meio externo</li>
+                        <li><strong>Surgimento do metabolismo e replicação:</strong> Primeiros sistemas vivos</li>
+                    </ol>
+                    
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(200, 247, 197, 0.1); border-radius: 8px; border-left: 4px solid #c8f7c5;">
+                        <p><strong>💡 Experimento de Miller-Urey (1953):</strong></p>
+                        <p>Stanley Miller, orientado por Harold Urey, simulou as condições da Terra primitiva em laboratório e produziu aminoácidos a partir de gases simples, dando suporte experimental à teoria de Oparin-Haldane.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-section" data-section="hipotese-autotrofica">
+                <h3 class="section-title"><i class="fas fa-seedling"></i> Hipótese Autotrófica</h3>
+                <div class="section-content">
+                    <p>Alternativa à teoria heterotrófica de Oparin, sugere que os primeiros seres vivos eram <span class="highlight">autotróficos</span>, capazes de produzir seu próprio alimento:</p>
+                    
+                    <ul>
+                        <li><strong>Base química:</strong> Reações em fontes hidrotermais submarinas</li>
+                        <li><strong>Evidências:</strong> Archaea termofílicas em fontes hidrotermais atuais</li>
+                        <li><strong>Vantagem:</strong> Não dependência de moléculas orgânicas pré-formadas</li>
+                        <li><strong>Desafio:</strong> Complexidade metabólica desde o início</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h3 class="section-title"><i class="fas fa-rocket"></i> Conceitos-Chave para Memorização</h3>
+                <div class="section-content">
+                    <p><strong>Palácio da Memória - Associações visuais:</strong></p>
+                    
+                    <ul>
+                        <li><span class="highlight">🌋 Vulcão:</span> Representa a Terra primitiva e condições extremas</li>
+                        <li><span class="highlight">⚡ Faísca:</span> Descargas elétricas na atmosfera primitiva</li>
+                        <li><span class="highlight">🧪 Frascos interconectados:</span> Experimento de Miller</li>
+                        <li><span class="highlight">🌊 Fontes hidrotermais:</span> Hipótese autotrófica</li>
+                        <li><span class="highlight">🦠 Coacervados:</span> Primeiras estruturas pré-celulares</li>
+                    </ul>
+                    
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(42, 90, 42, 0.3); border-radius: 8px;">
+                        <p><strong>🎯 Dica de estudo:</strong> Associe cada pensador a um objeto em sua sala mental. Por exemplo:</p>
+                        <ul>
+                            <li>Aristóteles → Estante de livros antigos</li>
+                            <li>Pasteur → Frascos de vidro no laboratório</li>
+                            <li>Miller → Aparelho de vidro com faíscas</li>
+                            <li>Oparin → Livro com fórmulas químicas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- BOTÕES DE NAVEGAÇÃO INFERIOR -->
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-btn btn-home">
+                <i class="fas fa-home"></i> Capa Principal
+            </a>
+            <a href="capitulo-00.html" class="nav-btn">
+                <i class="fas fa-arrow-left"></i> Capítulo 00
+            </a>
+            <a href="capitulo-02.html" class="nav-btn">
+                Capítulo 02 <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        
+        <footer class="footer">
+            <p>Organizador de Estudos - Palácio da Memória</p>
+            <p class="signature">Dev sr71n3</p>
+        </footer>
+    </div>
+
+    <script>
+        // ========== DADOS IDÊNTICOS AO ORIGINAL ==========
+        // Dados dos subtópicos - IDÊNTICOS AO ORIGINAL
+        const subtopics = {
+            "1": [
+                { title: "Big Bang", icon: "🌌" },
+                { title: "Pensadores", icon: "🤔" },
+                { title: "Teoria da Evolução Química", icon: "🧪" },
+                { title: "Hipótese Autotrófica", icon: "🌿" }
+            ]
+        };
+
+        // Dados dos pensadores - IDÊNTICOS AO ORIGINAL
+        const pensadores = {
+            "Pensadores": [
+                { title: "Aristóteles", icon: "👨‍🎓" },
+                { title: "Religião", icon: "⛪" },
+                { title: "Van Helmont (Jean-Baptiste)", icon: "🌿" },
+                { title: "Francesco Redi", icon: "🧪" },
+                { title: "Antoine", icon: "🔥" },
+                { title: "John Needham", icon: "🔬" },
+                { title: "Lazzaro Spallanzani", icon: "🧫" },
+                { title: "Louis Pasteur", icon: "🔍" },
+                { title: "Alexander Oparin", icon: "🧪" },
+                { title: "J.B.S. Haldane", icon: "🧬" },
+                { title: "Stanley Miller", icon: "⚡" }
+            ]
+        };
+
+        // ========== FUNÇÕES DO CAPÍTULO 01 ==========
+        function createSubtopics() {
+            const container = document.getElementById('subtopicsContainer');
+            const chapterSubtopic = subtopics["1"];
+            
+            if (chapterSubtopic) {
+                chapterSubtopic.forEach(subtopic => {
+                    const card = document.createElement('div');
+                    card.className = 'subtopic-card';
+                    
+                    card.innerHTML = `
+                        <div class="subtopic-icon">${subtopic.icon}</div>
+                        <div class="subtopic-title">${subtopic.title}</div>
+                    `;
+                    
+                    // Adiciona funcionalidade de rolagem suave para a seção correspondente
+                    card.addEventListener('click', function() {
+                        const sectionId = subtopic.title.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, '');
+                        const section = document.querySelector(`[data-section="${sectionId}"]`);
+                        if (section) {
+                            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            
+                            // Efeito visual de destaque
+                            section.style.backgroundColor = 'rgba(42, 90, 42, 0.4)';
+                            setTimeout(() => {
+                                section.style.backgroundColor = '';
+                            }, 2000);
+                        } else {
+                            // Se não encontrar a seção, rola para o topo da página
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }
+                    });
+                    
+                    container.appendChild(card);
+                });
+            }
+        }
+
+        function createPensadores() {
+            const container = document.getElementById('pensadoresContainer');
+            const pensadoresList = pensadores["Pensadores"];
+            
+            if (pensadoresList) {
+                pensadoresList.forEach(pensador => {
+                    const card = document.createElement('div');
+                    card.className = 'pensador-card';
+                    
+                    card.innerHTML = `
+                        <div class="pensador-icon">${pensador.icon}</div>
+                        <div class="pensador-name">${pensador.title}</div>
+                    `;
+                    
+                    container.appendChild(card);
+                });
+            }
+        }
+
+        // ========== INICIALIZAÇÃO ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            createSubtopics();
+            createPensadores();
+            
+            console.log('✅ Capítulo 01 - Origem da Vida carregado com sucesso!');
+            console.log('📚 Baseado fielmente no BioV6.html original');
+            console.log('🔗 Subtópicos e pensadores preservados integralmente');
+            console.log('🚫 Índice completo removido conforme solicitado');
+            
+            // Configuração para links de capítulos ainda não existentes
+            const nextChapterBtn = document.querySelector('a[href="capitulo-02.html"]');
+            if (nextChapterBtn) {
+                nextChapterBtn.addEventListener('click', function(e) {
+                    // Verifica se o arquivo existe (simulação)
+                    // Na implementação real, você pode verificar via fetch ou simplesmente
+                    // redirecionar para construção se o arquivo não existir
+                    console.log('Capítulo 02 ainda não está disponível');
+                    // Se quiser redirecionar para uma página de construção:
+                    // window.location.href = "construction.html";
+                    // e.preventDefault();
+                });
+            }
+        });
+
+        // ========== NAVEGAÇÃO POR TECLADO ==========
+        document.addEventListener('keydown', function(e) {
+            // Navegação entre capítulos com setas
+            if (e.key === 'ArrowLeft') {
+                window.location.href = 'capitulo-00.html';
+            } else if (e.key === 'ArrowRight') {
+                window.location.href = 'capitulo-02.html';
+            } else if (e.key === 'Home' || (e.ctrlKey && e.key === 'h')) {
+                window.location.href = 'index.html';
+            } else if (e.key === 'Escape') {
+                window.location.href = 'index.html';
+            }
+            
+            // Navegação por números para subtópicos
+            if (e.key >= '1' && e.key <= '4') {
+                const subtopicCards = document.querySelectorAll('.subtopic-card');
+                const index = parseInt(e.key) - 1;
+                if (subtopicCards[index]) {
+                    subtopicCards[index].click();
+                }
+            }
+        });
+
+        // ========== MELHORIA: SCROLL SMOOTH PARA LINKS INTERNOS ==========
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

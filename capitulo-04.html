@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04 - Superfície Celular | Palácio da Biologia</title>
+    
+    <meta name="theme-color" content="#0a1f0a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ========== CÓDIGO CSS EXATAMENTE IGUAL AO ORIGINAL ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0a1f0a;
+            color: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            padding: 20px 0;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(15, 75, 15, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(30, 120, 30, 0.15) 0%, transparent 20%),
+                linear-gradient(to bottom, #0a1f0a, #0f2a0f);
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1400px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            width: 100%;
+            position: relative;
+        }
+
+        .title {
+            font-size: 3rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            animation: titleGlow 8s infinite ease-in-out;
+            color: #c8f7c5;
+            text-shadow: 0 0 10px rgba(200, 247, 197, 0.3);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c8f7c5, transparent);
+        }
+
+        @keyframes titleGlow {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(200, 247, 197, 0.3);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(200, 247, 197, 0.6);
+            }
+        }
+
+        .scrolling-text-container {
+            width: 100%;
+            overflow: hidden;
+            margin: 20px 0 30px;
+            height: 30px;
+            position: relative;
+        }
+
+        .scrolling-text {
+            font-size: 0.9rem;
+            color: rgba(168, 216, 165, 0.7);
+            white-space: nowrap;
+            position: absolute;
+            animation: scrollText 25s linear infinite;
+        }
+
+        @keyframes scrollText {
+            0% {
+                left: 100%;
+            }
+            100% {
+                left: -100%;
+            }
+        }
+
+        .intro-btn {
+            background: linear-gradient(135deg, #1a3a1a, #0f2a0f);
+            color: #e0f0e0;
+            border: 1px solid #2a5a2a;
+            padding: 16px 32px;
+            font-size: 1.2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+            font-weight: 500;
+            text-decoration: none;
+            display: block;
+        }
+
+        .intro-btn:hover {
+            transform: translateY(-2px);
+            border-color: #3a7a3a;
+            background: linear-gradient(135deg, #2a5a2a, #1a4a1a);
+        }
+
+        .chapter-content {
+            background: linear-gradient(135deg, #0f2a0f, #0a1f0a);
+            width: 100%;
+            max-width: 1000px;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            border: 1px solid #2a5a2a;
+            margin: 20px 0 40px;
+            text-align: center;
+        }
+
+        .chapter-header {
+            margin-bottom: 40px;
+        }
+
+        .chapter-icon {
+            font-size: 6rem;
+            margin-bottom: 20px;
+            color: #c8f7c5;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .chapter-title {
+            font-size: 2.5rem;
+            color: #c8f7c5;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .chapter-number {
+            font-size: 1.5rem;
+            color: #7aa87a;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .empty-content {
+            text-align: center;
+            padding: 40px 20px;
+            color: #7aa87a;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        /* ESTILOS PARA SUBTÓPICOS - EXATAMENTE IGUAL AO ORIGINAL */
+        .subtopics-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+            padding: 20px;
+        }
+
+        .subtopic-card {
+            background: linear-gradient(135deg, #1a3a1a, #0f2a0f);
+            border: 1px solid #2a5a2a;
+            border-radius: 12px;
+            padding: 25px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 140px;
+        }
+
+        .subtopic-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            border-color: #3a7a3a;
+            background: linear-gradient(135deg, #2a5a2a, #1a4a1a);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(200, 247, 197, 0.3);
+        }
+
+        .subtopic-icon {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: #c8f7c5;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 8px rgba(200, 247, 197, 0.4));
+        }
+
+        .subtopic-card:hover .subtopic-icon {
+            transform: scale(1.2);
+            color: #e8ffe5;
+        }
+
+        .subtopic-title {
+            font-size: 1rem;
+            color: #e0f0e0;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .subtopic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(200, 247, 197, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .subtopic-card:hover::before {
+            left: 100%;
+        }
+
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #5a8a5a;
+            font-size: 1rem;
+            width: 100%;
+            padding: 20px;
+            border-top: 1px solid #1a3a1a;
+        }
+
+        .signature {
+            font-size: 1.2rem;
+            color: #7aa87a;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Responsive - EXATAMENTE IGUAL AO ORIGINAL */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.2rem;
+            }
+            
+            .chapter-content {
+                padding: 30px 20px;
+            }
+            
+            .chapter-title {
+                font-size: 2rem;
+            }
+            
+            .chapter-icon {
+                font-size: 5rem;
+            }
+
+            .subtopics-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .subtopic-card {
+                min-height: 120px;
+                padding: 20px 10px;
+            }
+
+            .subtopic-icon {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.8rem;
+            }
+            
+            .chapter-content {
+                padding: 20px 15px;
+            }
+            
+            .chapter-title {
+                font-size: 1.6rem;
+            }
+            
+            .chapter-icon {
+                font-size: 4rem;
+            }
+
+            .subtopics-container {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .subtopic-card {
+                min-height: 110px;
+                padding: 18px 10px;
+            }
+
+            .subtopic-icon {
+                font-size: 2rem;
+            }
+
+            .subtopic-title {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Palácio da Biologia</h1>
+            
+            <div class="scrolling-text-container">
+                <div class="scrolling-text">Capítulo 04 - Superfície Celular. By sr71n3</div>
+            </div>
+        </header>
+        
+        <a href="index.html" class="intro-btn">
+            <i class="fas fa-arrow-left"></i> Voltar à Capa
+        </a>
+        
+        <div class="chapter-content">
+            <div class="chapter-header">
+                <div class="chapter-icon">🛡️</div>
+                <h2 class="chapter-title">Superfície Celular</h2>
+                <div class="chapter-number">Capítulo 04</div>
+            </div>
+            
+            <div class="empty-content">
+                <div style="font-size: 4rem; margin-bottom: 20px;">🛡️</div>
+                <p style="margin-bottom: 20px; font-size: 1.3rem;">
+                    Conteúdo do capítulo <strong style="color: #c8f7c5;">"Superfície Celular"</strong>
+                </p>
+                <p>Espaço reservado para conteúdo sobre Superfície Celular.</p>
+                <p>Você poderá adicionar textos, imagens, links e anotações pessoais aqui.</p>
+            </div>
+            
+            <!-- SUBTÓPICOS - CONFORME EXISTE NO ORIGINAL -->
+            <div id="subtopicsSection" style="display: none;">
+                <h3 style="color: #c8f7c5; text-align: center; margin: 40px 0 20px; font-size: 1.4rem;">
+                    Subtópicos
+                </h3>
+                <div class="subtopics-container" id="subtopicsContainer">
+                    <!-- Subtópicos serão gerados via JavaScript se existirem -->
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; padding: 20px; background: rgba(42, 90, 42, 0.1); border-radius: 8px;">
+                <p><strong>Dicas de estudo para este capítulo:</strong></p>
+                <ul style="text-align: left; margin-top: 10px; display: inline-block;">
+                    <li>Crie associações visuais fortes</li>
+                    <li>Use o Palácio da Memória para estruturas complexas</li>
+                    <li>Revise a cada 24h, 7 dias e 30 dias</li>
+                    <li>Relacione com exemplos do cotidiano</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div style="display: flex; gap: 20px; margin: 20px 0;">
+            <a href="capitulo-03.html" class="intro-btn" style="max-width: 200px;">
+                <i class="fas fa-arrow-left"></i> Capítulo 03
+            </a>
+            <a href="capitulo-05.html" class="intro-btn" style="max-width: 200px;">
+                Capítulo 05 <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        
+        <footer class="footer">
+            <p>Organizador de Estudos - Palácio da Memória</p>
+            <p class="signature">Dev sr71n3</p>
+        </footer>
+    </div>
+
+    <script>
+        // ========== DADOS EXATAMENTE COMO NO ORIGINAL ==========
+        const topics = [
+            // Capítulo 00 - Introdução
+            { number: "00", title: "Introdução", icon: "🏛️", section: 0 },
+            
+            // Capítulos 01-11 (Fundamentos da Vida)
+            { number: "01", title: "Origem da Vida", icon: "🌋", section: 1 },
+            { number: "02", title: "Citologia", icon: "🔬", section: 1 },
+            { number: "03", title: "Composição Celular", icon: "🧫", section: 1 },
+            { number: "04", title: "Superfície Celular", icon: "🛡️", section: 1 },
+            { number: "05", title: "Citoplasma", icon: "🌀", section: 1 },
+            { number: "06", title: "Metabolismo Energético", icon: "⚡", section: 1 },
+            { number: "07", title: "Núcleo e Síntese Proteica", icon: "🧬", section: 1 },
+            { number: "08", title: "Divisões Celulares", icon: "🔄", section: 1 },
+            { number: "09", title: "Reprodução", icon: "👨‍👩‍👧‍👦", section: 1 },
+            { number: "10", title: "Desenvolvimento Embrionário", icon: "👶", section: 1 },
+            { number: "11", title: "Histologia Animal", icon: "🔍", section: 1 },
+            
+            // Capítulos 12-25 (Diversidade Biológica)
+            { number: "12", title: "Evolução", icon: "🦖", section: 2 },
+            { number: "13", title: "Vírus", icon: "🦠", section: 2 },
+            { number: "14", title: "Monera", icon: "🦠", section: 2 },
+            { number: "15", title: "Protista", icon: "🐙", section: 2 },
+            { number: "16", title: "Fungi", icon: "🍄", section: 2 },
+            { number: "17", title: "Plantae", icon: "🌿", section: 2 },
+            { number: "18", title: "Morfologia Vegetal", icon: "🌱", section: 2 },
+            { number: "19", title: "Fisiologia Vegetal", icon: "🌻", section: 2 },
+            { number: "20", title: "Introdução aos Animais", icon: "🐾", section: 2 },
+            { number: "21", title: "Platelmintos e Nematoda", icon: "🐛", section: 2 },
+            { number: "22", title: "Mollusca e Anelida", icon: "🐌", section: 2 },
+            { number: "23", title: "Arthropoda e Equinodermata", icon: "🦀", section: 2 },
+            { number: "24", title: "Cordata 1", icon: "🐠", section: 2 },
+            { number: "25", title: "Cordata 2", icon: "🐒", section: 2 },
+            
+            // Capítulos 26-35 (Fisiologia e Sistemas)
+            { number: "26", title: "Sustentação, Digestão, Respiração", icon: "🫁", section: 3 },
+            { number: "27", title: "Circulação, Defesa, Excreção", icon: "❤️", section: 3 },
+            { number: "28", title: "Coordenação e Regulação", icon: "🧠", section: 3 },
+            { number: "29", title: "Genética Clássica", icon: "🧬", section: 3 },
+            { number: "30", title: "Primeira Lei de Mendel", icon: "🌱", section: 3 },
+            { number: "31", title: "Segunda Lei de Mendel", icon: "🌾", section: 3 },
+            { number: "32", title: "Ligação Gênica", icon: "🔗", section: 3 },
+            { number: "33", title: "Mutação", icon: "⚡", section: 3 },
+            { number: "34", title: "Cromossomos e Genes", icon: "🧬", section: 3 },
+            { number: "35", title: "Biotecnologia", icon: "🧪", section: 3 },
+            
+            // Capítulos 36-41 (Ecologia e Evolução)
+            { number: "36", title: "Teoria da Evolução", icon: "🦍", section: 4 },
+            { number: "37", title: "Ecologia Populacional", icon: "👥", section: 4 },
+            { number: "38", title: "Ecologia de Comunidades", icon: "🌳", section: 4 },
+            { number: "39", title: "Relações Ecológicas", icon: "🤝", section: 4 },
+            { number: "40", title: "Sucessão Ecológica", icon: "🔄", section: 4 },
+            { number: "41", title: "Equilíbrio Ecológico", icon: "⚖️", section: 4 }
+        ];
+
+        // Dados dos subtópicos - EXATAMENTE COMO NO ORIGINAL (apenas capítulo 1 tem)
+        const subtopics = {
+            "1": [
+                { title: "Big Bang", icon: "🌌" },
+                { title: "Pensadores", icon: "🤔" },
+                { title: "Teoria da Evolução Química", icon: "🧪" },
+                { title: "Hipótese Autotrófica", icon: "🌿" }
+            ]
+        };
+
+        // Dados dos pensadores - EXATAMENTE COMO NO ORIGINAL
+        const pensadores = {
+            "Pensadores": [
+                { title: "Aristóteles", icon: "👨‍🎓" },
+                { title: "Religião", icon: "⛪" },
+                { title: "Van Helmont (Jean-Baptiste)", icon: "🌿" },
+                { title: "Francesco Redi", icon: "🧪" },
+                { title: "Antoine", icon: "🔥" },
+                { title: "John Needham", icon: "🔬" },
+                { title: "Lazzaro Spallanzani", icon: "🧫" },
+                { title: "Louis Pasteur", icon: "🔍" },
+                { title: "Alexander Oparin", icon: "🧪" },
+                { title: "J.B.S. Haldane", icon: "🧬" },
+                { title: "Stanley Miller", icon: "⚡" }
+            ]
+        };
+
+        // ========== FUNÇÕES ==========
+        function checkForSubtopics() {
+            const currentChapter = "4"; // Capítulo atual
+            const chapterSubtopics = subtopics[currentChapter];
+            
+            if (chapterSubtopics && chapterSubtopics.length > 0) {
+                // Mostrar seção de subtópicos
+                document.getElementById('subtopicsSection').style.display = 'block';
+                
+                // Criar cards de subtópicos
+                const container = document.getElementById('subtopicsContainer');
+                
+                chapterSubtopics.forEach(subtopic => {
+                    const card = document.createElement('div');
+                    card.className = 'subtopic-card';
+                    
+                    card.innerHTML = `
+                        <div class="subtopic-icon">${subtopic.icon}</div>
+                        <div class="subtopic-title">${subtopic.title}</div>
+                    `;
+                    
+                    // Verificar se é "Pensadores" para mostrar pensadores
+                    card.addEventListener('click', function() {
+                        if (subtopic.title === "Pensadores") {
+                            const pensadoresList = pensadores[subtopic.title];
+                            if (pensadoresList) {
+                                alert(`Pensadores para ${subtopic.title}:\n\n` + 
+                                      pensadoresList.map(p => p.title).join('\n'));
+                            }
+                        } else {
+                            alert(`Subtópico: ${subtopic.title}\n\nConteúdo será adicionado posteriormente.`);
+                        }
+                    });
+                    
+                    container.appendChild(card);
+                });
+            }
+        }
+
+        // ========== INICIALIZAÇÃO ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            checkForSubtopics();
+            
+            console.log('✅ Capítulo 04 - Superfície Celular carregado');
+            console.log('📚 Baseado EXATAMENTE no BioV6.html original');
+            console.log('ℹ️  No original, o capítulo 4 não tem subtópicos definidos');
+            
+            // Verificar links para próximos capítulos
+            const nextBtn = document.querySelector('a[href="capitulo-05.html"]');
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function(e) {
+                    // Verificar se o capítulo 05 existe
+                    if (!document.querySelector('a[href="capitulo-05.html"][data-exists="true"]')) {
+                        e.preventDefault();
+                        alert('Capítulo 05 ainda não foi criado. Será redirecionado para a página de construção.');
+                        window.location.href = 'construction.html';
+                    }
+                });
+            }
+        });
+
+        // ========== NAVEGAÇÃO POR TECLADO ==========
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                window.location.href = 'index.html';
+            }
+            if (e.key === 'ArrowLeft') {
+                window.location.href = 'capitulo-03.html';
+            }
+            if (e.key === 'ArrowRight') {
+                window.location.href = 'capitulo-05.html';
+            }
+        });
+    </script>
+</body>
+</html>

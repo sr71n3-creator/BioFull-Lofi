@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20 - Introdução aos Animais | Palácio da Biologia</title>
+    
+    <meta name="theme-color" content="#0a1f0a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ========== CÓDIGO CSS IDÊNTICO AO ORIGINAL ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0a1f0a;
+            color: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            padding: 20px 0;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(15, 75, 15, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(30, 120, 30, 0.15) 0%, transparent 20%),
+                linear-gradient(to bottom, #0a1f0a, #0f2a0f);
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1400px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            width: 100%;
+            position: relative;
+        }
+
+        .title {
+            font-size: 3rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            animation: titleGlow 8s infinite ease-in-out;
+            color: #c8f7c5;
+            text-shadow: 0 0 10px rgba(200, 247, 197, 0.3);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c8f7c5, transparent);
+        }
+
+        @keyframes titleGlow {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(200, 247, 197, 0.3);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(200, 247, 197, 0.6);
+            }
+        }
+
+        .scrolling-text-container {
+            width: 100%;
+            overflow: hidden;
+            margin: 20px 0 30px;
+            height: 30px;
+            position: relative;
+        }
+
+        .scrolling-text {
+            font-size: 0.9rem;
+            color: rgba(168, 216, 165, 0.7);
+            white-space: nowrap;
+            position: absolute;
+            animation: scrollText 25s linear infinite;
+        }
+
+        @keyframes scrollText {
+            0% {
+                left: 100%;
+            }
+            100% {
+                left: -100%;
+            }
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #1a3a1a, #0f2a0f);
+            color: #e0f0e0;
+            border: 1px solid #2a5a2a;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-align: center;
+            font-weight: 500;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 200px;
+            justify-content: center;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            border-color: #3a7a3a;
+            background: linear-gradient(135deg, #2a5a2a, #1a4a1a);
+        }
+
+        .btn-home {
+            background: linear-gradient(135deg, #2a5a2a, #1a4a1a);
+        }
+
+        /* ========== CONTEÚDO DO CAPÍTULO 20 ========== */
+        .chapter-content {
+            background: linear-gradient(135deg, #0f2a0f, #0a1f0a);
+            width: 100%;
+            max-width: 1000px;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            border: 1px solid #2a5a2a;
+            margin: 20px 0 40px;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #2a5a2a;
+        }
+
+        .chapter-title {
+            font-size: 2.2rem;
+            color: #c8f7c5;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .chapter-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .chapter-subtitle {
+            font-size: 1.3rem;
+            color: #a8d8a8;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        /* ESTILOS PARA CONTEÚDO DO CAPÍTULO */
+        .content-section {
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(26, 58, 26, 0.2);
+            border-radius: 10px;
+            border-left: 4px solid #3a7a3a;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            color: #c8f7c5;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .section-content {
+            color: #d0e8d0;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .section-content ul, .section-content ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .section-content li {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            color: #c8f7c5;
+            font-weight: 500;
+            background: rgba(42, 90, 42, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #5a8a5a;
+            font-size: 1rem;
+            width: 100%;
+            padding: 20px;
+            border-top: 1px solid #1a3a1a;
+        }
+
+        .signature {
+            font-size: 1.2rem;
+            color: #7aa87a;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Responsive - IDÊNTICO AO ORIGINAL */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.2rem;
+            }
+            
+            .chapter-content {
+                padding: 30px 20px;
+            }
+            
+            .chapter-title {
+                font-size: 1.8rem;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.8rem;
+            }
+            
+            .chapter-content {
+                padding: 20px 15px;
+            }
+            
+            .chapter-title {
+                font-size: 1.5rem;
+            }
+            
+            .chapter-icon {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Palácio da Biologia</h1>
+            
+            <div class="scrolling-text-container">
+                <div class="scrolling-text">Capítulo 20 - Introdução aos Animais. By sr71n3</div>
+            </div>
+        </header>
+        
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-btn btn-home">
+                <i class="fas fa-home"></i> Capa Principal
+            </a>
+            <a href="capitulo-19.html" class="nav-btn">
+                <i class="fas fa-arrow-left"></i> Capítulo 19
+            </a>
+            <a href="capitulo-21.html" class="nav-btn">
+                Capítulo 21 <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        
+        <div class="chapter-content">
+            <div class="chapter-header">
+                <div class="chapter-icon">🐾</div>
+                <h2 class="chapter-title">20 – Introdução aos Animais</h2>
+                <p class="chapter-subtitle">Conteúdo será inserido posteriormente</p>
+            </div>
+            
+            <div class="content-section">
+                <h3 class="section-title"><i class="fas fa-info-circle"></i> Informações do Capítulo</h3>
+                <div class="section-content">
+                    <p>Este é o capítulo <span class="highlight">20 - Introdução aos Animais</span> do Palácio da Biologia.</p>
+                    
+                    <p>O conteúdo completo deste capítulo será desenvolvido e inserido posteriormente, mantendo a estrutura e organização do sistema de estudos.</p>
+                    
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(42, 90, 42, 0.2); border-radius: 8px;">
+                        <p><strong>🎯 Estrutura prevista para este capítulo:</strong></p>
+                        <ul>
+                            <li>Introdução ao estudo dos animais</li>
+                            <li>Características gerais do reino Animalia</li>
+                            <li>Classificação básica dos animais</li>
+                            <li>Principais filos animais</li>
+                            <li>Evolução e diversidade animal</li>
+                            <li>Níveis de organização</li>
+                            <li>Simetria e planos corporais</li>
+                            <li>Conceitos fundamentais em zoologia</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h3 class="section-title"><i class="fas fa-clock"></i> Status do Conteúdo</h3>
+                <div class="section-content">
+                    <p><strong>Status atual:</strong> Em desenvolvimento</p>
+                    <p><strong>Previsão de conclusão:</strong> A definir</p>
+                    <p><strong>Próxima atualização:</strong> Conteúdo completo será inserido</p>
+                    
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(200, 247, 197, 0.1); border-radius: 8px; border-left: 4px solid #c8f7c5;">
+                        <p><strong>💡 Enquanto isso, você pode:</strong></p>
+                        <ul>
+                            <li>Revisar os capítulos anteriores</li>
+                            <li>Explorar a estrutura do Palácio da Memória</li>
+                            <li>Preparar suas anotações para este capítulo</li>
+                            <li>Consultar outras fontes sobre Introdução aos Animais</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h3 class="section-title"><i class="fas fa-brain"></i> Dica de Memorização</h3>
+                <div class="section-content">
+                    <p>Para o estudo de <span class="highlight">Introdução aos Animais</span>, sugerimos as seguintes associações para o Palácio da Memória:</p>
+                    
+                    <ul>
+                        <li><strong>🐾 Diversidade animal:</strong> Reino com maior variedade de formas</li>
+                        <li><strong>🔬 Níveis de organização:</strong> De células a sistemas complexos</li>
+                        <li><strong>⚖️ Simetria corporal:</strong> Bilateral vs radial vs assimétrica</li>
+                        <li><strong>🏗️ Planos corporais:</strong> Estruturas básicas que definem os filos</li>
+                        <li><strong>🌳 Árvore evolutiva:</strong> Relações filogenéticas entre os animais</li>
+                    </ul>
+                    
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(42, 90, 42, 0.3); border-radius: 8px;">
+                        <p><strong>🎯 Associação visual sugerida:</strong></p>
+                        <p>Imagine um <strong>zoológico mental</strong> onde:</p>
+                        <ol>
+                            <li>Cada <strong>área do zoológico</strong> representa um filo animal</li>
+                            <li>Os <strong>caminhos entre áreas</strong> mostram relações evolutivas</li>
+                            <li>Os <strong>recintos</strong> demonstram diferentes níveis de organização</li>
+                            <li>Os <strong>mapas de simetria</strong> mostram padrões corporais</li>
+                            <li>Os <strong>guardiões</strong> representam características definidoras</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-btn btn-home">
+                <i class="fas fa-home"></i> Capa Principal
+            </a>
+            <a href="capitulo-19.html" class="nav-btn">
+                <i class="fas fa-arrow-left"></i> Capítulo 19
+            </a>
+            <a href="capitulo-21.html" class="nav-btn">
+                Capítulo 21 <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        
+        <footer class="footer">
+            <p>Organizador de Estudos - Palácio da Memória</p>
+            <p class="signature">Dev sr71n3</p>
+        </footer>
+    </div>
+
+    <script>
+        // ========== NAVEGAÇÃO ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('✅ Capítulo 20 - Introdução aos Animais carregado com sucesso!');
+            
+            // Configurar links temporários para capítulos não existentes
+            const navLinks = document.querySelectorAll('.nav-btn');
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href !== 'index.html' && !href.includes('construction')) {
+                    link.addEventListener('click', function(e) {
+                        console.log(`Navegando para: ${href}`);
+                    });
+                }
+            });
+        });
+
+        // ========== NAVEGAÇÃO POR TECLADO ==========
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                window.location.href = 'capitulo-19.html';
+            } else if (e.key === 'ArrowRight') {
+                window.location.href = 'capitulo-21.html';
+            } else if (e.key === 'Home' || (e.ctrlKey && e.key === 'h')) {
+                window.location.href = 'index.html';
+            } else if (e.key === 'Escape') {
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>
