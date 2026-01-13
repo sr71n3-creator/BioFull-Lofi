@@ -30,32 +30,10 @@
         }
 
         /* ========== CONTAINER PRINCIPAL ========== */
-        .main-container {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(5, 20, 5, 0.98);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .main-container.active {
-            display: flex;
-        }
-
-        /* ========== CAPA (ÍNDICE) ========== */
-        #cover-page {
-            display: block;
-        }
-
         .container {
             width: 95%;
             max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
             display: flex;
             flex-direction: column;
@@ -186,113 +164,6 @@
             line-height: 1.3;
         }
 
-        /* ========== PÁGINA EM CONSTRUÇÃO ========== */
-        .construction-page {
-            display: none;
-            background: rgba(15, 40, 15, 0.95);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 700px;
-            width: 90%;
-            text-align: center;
-            border: 1px solid #2a5a2a;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .construction-page.active {
-            display: block;
-        }
-
-        .construction-page::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(200, 247, 197, 0.05), transparent);
-            animation: shimmer 8s infinite linear;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-50%) translateY(-50%) rotate(0deg); }
-            100% { transform: translateX(-50%) translateY(-50%) rotate(360deg); }
-        }
-
-        .construction-icon {
-            font-size: 5rem;
-            margin-bottom: 25px;
-            color: #c8f7c5;
-            animation: pulse 3s infinite ease-in-out;
-            filter: drop-shadow(0 0 15px rgba(200, 247, 197, 0.4));
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.9; }
-        }
-
-        .construction-title {
-            font-size: 2.2rem;
-            color: #c8f7c5;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .construction-message {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: #d0e8d0;
-            margin-bottom: 30px;
-        }
-
-        .chapter-info {
-            background: rgba(42, 90, 42, 0.3);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 20px 0;
-            border-left: 4px solid #3a7a3a;
-        }
-
-        .btn-container {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            background: linear-gradient(135deg, #1a3a1a, #0f2a0f);
-            color: #e0f0e0;
-            border: 1px solid #2a5a2a;
-            padding: 12px 25px;
-            font-size: 1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            min-width: 150px;
-            text-align: center;
-            font-weight: 500;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            border-color: #3a7a3a;
-            background: linear-gradient(135deg, #2a5a2a, #1a4a1a);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #2a5a2a, #1a4a1a);
-            border-color: #3a7a3a;
-        }
-
         /* ========== FOOTER ========== */
         .footer {
             margin-top: 30px;
@@ -352,18 +223,6 @@
             .chapter-title {
                 font-size: 0.85rem;
             }
-            
-            .construction-page {
-                padding: 30px 20px;
-            }
-            
-            .construction-title {
-                font-size: 1.8rem;
-            }
-            
-            .construction-icon {
-                font-size: 4rem;
-            }
         }
 
         @media (max-width: 480px) {
@@ -396,28 +255,6 @@
                 left: 8px;
                 font-size: 0.9rem;
             }
-            
-            .construction-title {
-                font-size: 1.6rem;
-            }
-            
-            .construction-icon {
-                font-size: 3.5rem;
-            }
-            
-            .construction-message {
-                font-size: 1rem;
-            }
-            
-            .btn-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 250px;
-            }
         }
 
         @media (max-width: 360px) {
@@ -433,7 +270,7 @@
 </head>
 <body>
     <!-- ========== CAPA PRINCIPAL ========== -->
-    <div id="cover-page" class="container">
+    <div class="container">
         <header class="header">
             <h1 class="title">Palácio da Biologia</h1>
             
@@ -452,37 +289,6 @@
         </footer>
     </div>
 
-    <!-- ========== PÁGINA EM CONSTRUÇÃO ========== -->
-    <div class="main-container" id="constructionContainer">
-        <div class="construction-page" id="constructionPage">
-            <div class="construction-icon">🚧</div>
-            <h1 class="construction-title" id="constructionTitle">Capítulo em Desenvolvimento</h1>
-            
-            <div class="construction-message">
-                <p>Este capítulo está sendo preparado com conteúdo especializado.</p>
-                <p>Em breve estará disponível com material completo para seus estudos.</p>
-                
-                <div class="chapter-info" id="chapterInfo">
-                    <!-- Informações do capítulo serão inseridas aqui -->
-                </div>
-                
-                <p><strong>Por enquanto, você pode:</strong></p>
-            </div>
-            
-            <div class="btn-container">
-                <button class="btn btn-primary" onclick="openGitHub()">
-                    <i class="fab fa-github"></i> Acessar GitHub
-                </button>
-                <button class="btn" onclick="openGoogle()">
-                    <i class="fab fa-google"></i> Pesquisar no Google
-                </button>
-                <button class="btn" onclick="returnToCover()">
-                    <i class="fas fa-arrow-left"></i> Voltar ao Índice
-                </button>
-            </div>
-        </div>
-    </div>
-
     <script>
         // ========== CONFIGURAÇÃO DOS CAPÍTULOS ==========
         const chapters = [
@@ -491,114 +297,123 @@
                 number: "00", 
                 title: "Introdução", 
                 icon: "🏛️",
-                links: {
-                    github: "https://github.com/sr71n3",
-                    google: "https://www.google.com/search?q=introdução+biologia+estudos"
-                }
+                file: "capitulo-00.html"
             },
             
             // Capítulos 01-11
-            { number: "01", title: "Origem da Vida", icon: "🌋", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=origem+da+vida+biologia" }},
-            { number: "02", title: "Citologia", icon: "🔬", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=citologia+biologia" }},
-            { number: "03", title: "Composição Celular", icon: "🧫", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=composição+celular" }},
-            { number: "04", title: "Superfície Celular", icon: "🛡️", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=superfície+celular" }},
-            { number: "05", title: "Citoplasma", icon: "🌀", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=citoplasma+biologia" }},
-            { number: "06", title: "Metabolismo Energético", icon: "⚡", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=metabolismo+energético" }},
-            { number: "07", title: "Núcleo e Síntese Proteica", icon: "🧬", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=núcleo+síntese+proteica" }},
-            { number: "08", title: "Divisões Celulares", icon: "🔄", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=divisões+celulares" }},
-            { number: "09", title: "Reprodução", icon: "👨‍👩‍👧‍👦", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=reprodução+biologia" }},
-            { number: "10", title: "Desenvolvimento Embrionário", icon: "👶", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=desenvolvimento+embrionário" }},
-            { number: "11", title: "Histologia Animal", icon: "🔍", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=histologia+animal" }},
+            { 
+                number: "01", 
+                title: "Origem da Vida", 
+                icon: "🌋",
+                file: "capitulo-01.html"
+            },
+            { 
+                number: "02", 
+                title: "Citologia", 
+                icon: "🔬",
+                file: "capitulo-02.html"
+            },
+            { 
+                number: "03", 
+                title: "Composição Celular", 
+                icon: "🧫",
+                file: "capitulo-03.html"
+            },
+            { 
+                number: "04", 
+                title: "Superfície Celular", 
+                icon: "🛡️",
+                file: "capitulo-04.html"
+            },
+            { 
+                number: "05", 
+                title: "Citoplasma", 
+                icon: "🌀",
+                file: "capitulo-05.html"
+            },
+            { 
+                number: "06", 
+                title: "Metabolismo Energético", 
+                icon: "⚡",
+                file: "capitulo-06.html"
+            },
+            { 
+                number: "07", 
+                title: "Núcleo e Síntese Proteica", 
+                icon: "🧬",
+                file: "capitulo-07.html"
+            },
+            { 
+                number: "08", 
+                title: "Divisões Celulares", 
+                icon: "🔄",
+                file: "capitulo-08.html"
+            },
+            { 
+                number: "09", 
+                title: "Reprodução", 
+                icon: "👨‍👩‍👧‍👦",
+                file: "capitulo-09.html"
+            },
+            { 
+                number: "10", 
+                title: "Desenvolvimento Embrionário", 
+                icon: "👶",
+                file: "capitulo-10.html"
+            },
+            { 
+                number: "11", 
+                title: "Histologia Animal", 
+                icon: "🔍",
+                file: "capitulo-11.html"
+            },
             
             // Capítulos 12-25
-            { number: "12", title: "Evolução", icon: "🦖", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=evolução+biologia" }},
-            { number: "13", title: "Vírus", icon: "🦠", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=vírus+biologia" }},
-            { number: "14", title: "Monera", icon: "🦠", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=monera+biologia" }},
-            { number: "15", title: "Protista", icon: "🐙", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=protista+biologia" }},
-            { number: "16", title: "Fungi", icon: "🍄", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=fungi+biologia" }},
-            { number: "17", title: "Plantae", icon: "🌿", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=plantae+biologia" }},
-            { number: "18", title: "Morfologia Vegetal", icon: "🌱", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=morfologia+vegetal" }},
-            { number: "19", title: "Fisiologia Vegetal", icon: "🌻", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=fisiologia+vegetal" }},
-            { number: "20", title: "Introdução aos Animais", icon: "🐾", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=introdução+animais+biologia" }},
-            { number: "21", title: "Platelmintos e Nematoda", icon: "🐛", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=platelmintos+nematoda" }},
-            { number: "22", title: "Mollusca e Anelida", icon: "🐌", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=mollusca+anelida" }},
-            { number: "23", title: "Arthropoda e Equinodermata", icon: "🦀", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=arthropoda+equinodermata" }},
-            { number: "24", title: "Cordata 1", icon: "🐠", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=cordata+biologia" }},
-            { number: "25", title: "Cordata 2", icon: "🐒", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=cordata+vertebrados" }},
+            { number: "12", title: "Evolução", icon: "🦖", file: "capitulo-12.html" },
+            { number: "13", title: "Vírus", icon: "🦠", file: "capitulo-13.html" },
+            { number: "14", title: "Monera", icon: "🦠", file: "capitulo-14.html" },
+            { number: "15", title: "Protista", icon: "🐙", file: "capitulo-15.html" },
+            { number: "16", title: "Fungi", icon: "🍄", file: "capitulo-16.html" },
+            { number: "17", title: "Plantae", icon: "🌿", file: "capitulo-17.html" },
+            { number: "18", title: "Morfologia Vegetal", icon: "🌱", file: "capitulo-18.html" },
+            { number: "19", title: "Fisiologia Vegetal", icon: "🌻", file: "capitulo-19.html" },
+            { number: "20", title: "Introdução aos Animais", icon: "🐾", file: "capitulo-20.html" },
+            { number: "21", title: "Platelmintos e Nematoda", icon: "🐛", file: "capitulo-21.html" },
+            { number: "22", title: "Mollusca e Anelida", icon: "🐌", file: "capitulo-22.html" },
+            { number: "23", title: "Arthropoda e Equinodermata", icon: "🦀", file: "capitulo-23.html" },
+            { number: "24", title: "Cordata 1", icon: "🐠", file: "capitulo-24.html" },
+            { number: "25", title: "Cordata 2", icon: "🐒", file: "capitulo-25.html" },
             
             // Capítulos 26-35
-            { number: "26", title: "Sustentação, Digestão, Respiração", icon: "🫁", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=sustentação+digestão+respiração" }},
-            { number: "27", title: "Circulação, Defesa, Excreção", icon: "❤️", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=circulação+defesa+excreção" }},
-            { number: "28", title: "Coordenação e Regulação", icon: "🧠", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=coordenação+regulação+biologia" }},
-            { number: "29", title: "Genética Clássica", icon: "🧬", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=genética+clássica" }},
-            { number: "30", title: "Primeira Lei de Mendel", icon: "🌱", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=primeira+lei+mendel" }},
-            { number: "31", title: "Segunda Lei de Mendel", icon: "🌾", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=segunda+lei+mendel" }},
-            { number: "32", title: "Ligação Gênica", icon: "🔗", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=ligação+gênica" }},
-            { number: "33", title: "Mutação", icon: "⚡", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=mutação+genética" }},
-            { number: "34", title: "Cromossomos e Genes", icon: "🧬", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=cromossomos+genes" }},
-            { number: "35", title: "Biotecnologia", icon: "🧪", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=biotecnologia+biologia" }},
+            { number: "26", title: "Sustentação, Digestão, Respiração", icon: "🫁", file: "capitulo-26.html" },
+            { number: "27", title: "Circulação, Defesa, Excreção", icon: "❤️", file: "capitulo-27.html" },
+            { number: "28", title: "Coordenação e Regulação", icon: "🧠", file: "capitulo-28.html" },
+            { number: "29", title: "Genética Clássica", icon: "🧬", file: "capitulo-29.html" },
+            { number: "30", title: "Primeira Lei de Mendel", icon: "🌱", file: "capitulo-30.html" },
+            { number: "31", title: "Segunda Lei de Mendel", icon: "🌾", file: "capitulo-31.html" },
+            { number: "32", title: "Ligação Gênica", icon: "🔗", file: "capitulo-32.html" },
+            { number: "33", title: "Mutação", icon: "⚡", file: "capitulo-33.html" },
+            { number: "34", title: "Cromossomos e Genes", icon: "🧬", file: "capitulo-34.html" },
+            { number: "35", title: "Biotecnologia", icon: "🧪", file: "capitulo-35.html" },
             
             // Capítulos 36-41
-            { number: "36", title: "Teoria da Evolução", icon: "🦍", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=teoria+evolução" }},
-            { number: "37", title: "Ecologia Populacional", icon: "👥", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=ecologia+populacional" }},
-            { number: "38", title: "Ecologia de Comunidades", icon: "🌳", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=ecologia+comunidades" }},
-            { number: "39", title: "Relações Ecológicas", icon: "🤝", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=relações+ecológicas" }},
-            { number: "40", title: "Sucessão Ecológica", icon: "🔄", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=sucessão+ecológica" }},
-            { number: "41", title: "Equilíbrio Ecológico", icon: "⚖️", 
-              links: { github: "https://github.com/sr71n3", google: "https://www.google.com/search?q=equilíbrio+ecológico" }}
+            { number: "36", title: "Teoria da Evolução", icon: "🦍", file: "capitulo-36.html" },
+            { number: "37", title: "Ecologia Populacional", icon: "👥", file: "capitulo-37.html" },
+            { number: "38", title: "Ecologia de Comunidades", icon: "🌳", file: "capitulo-38.html" },
+            { number: "39", title: "Relações Ecológicas", icon: "🤝", file: "capitulo-39.html" },
+            { number: "40", title: "Sucessão Ecológica", icon: "🔄", file: "capitulo-40.html" },
+            { number: "41", title: "Equilíbrio Ecológico", icon: "⚖️", file: "capitulo-41.html" }
         ];
 
-        // Variáveis globais
-        let currentChapter = null;
-
-        // ========== FUNÇÕES PRINCIPAIS ==========
+        // ========== FUNÇÃO PARA CRIAR OS CARDS ==========
         function createChapterCards() {
             const container = document.getElementById('chaptersContainer');
             
             chapters.forEach(chapter => {
-                const card = document.createElement('div');
+                const card = document.createElement('a');
                 card.className = 'chapter-card';
                 card.setAttribute('data-chapter', chapter.number);
+                card.href = chapter.file; // Link direto para o arquivo
                 
                 card.innerHTML = `
                     <div class="chapter-number">${chapter.number}</div>
@@ -606,54 +421,8 @@
                     <div class="chapter-title">${chapter.title}</div>
                 `;
                 
-                card.addEventListener('click', () => {
-                    showConstructionPage(chapter);
-                });
-                
                 container.appendChild(card);
             });
-        }
-
-        function showConstructionPage(chapter) {
-            currentChapter = chapter;
-            
-            // Atualiza o título da página
-            document.getElementById('constructionTitle').textContent = 
-                `Capítulo ${chapter.number}: ${chapter.title}`;
-            
-            // Atualiza as informações do capítulo
-            document.getElementById('chapterInfo').innerHTML = `
-                <p><strong>Capítulo ${chapter.number}:</strong> ${chapter.title}</p>
-                <p>Este material está em fase de desenvolvimento.</p>
-            `;
-            
-            // Mostra a página de construção
-            document.getElementById('cover-page').style.display = 'none';
-            document.getElementById('constructionContainer').classList.add('active');
-            document.getElementById('constructionPage').classList.add('active');
-        }
-
-        function returnToCover() {
-            document.getElementById('constructionContainer').classList.remove('active');
-            document.getElementById('constructionPage').classList.remove('active');
-            document.getElementById('cover-page').style.display = 'block';
-            currentChapter = null;
-        }
-
-        function openGitHub() {
-            if (currentChapter && currentChapter.links.github) {
-                window.open(currentChapter.links.github, '_blank');
-            } else {
-                window.open('https://github.com/sr71n3', '_blank');
-            }
-        }
-
-        function openGoogle() {
-            if (currentChapter && currentChapter.links.google) {
-                window.open(currentChapter.links.google, '_blank');
-            } else {
-                window.open('https://www.google.com', '_blank');
-            }
         }
 
         // ========== INICIALIZAÇÃO ==========
@@ -663,56 +432,20 @@
             // Log de inicialização
             console.log('✅ Palácio da Biologia carregado com sucesso!');
             console.log(`📚 Total de capítulos: ${chapters.length}`);
-            console.log('🔗 Links temporários configurados para GitHub e Google');
-            console.log('💡 Para alterar links: Atualize o array "chapters" no JavaScript');
-            
-            // Detecta se está em dispositivo móvel (para Kodular)
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                console.log('📱 Modo móvel detectado - Otimizado para Kodular');
-            }
+            console.log('🔗 Links diretos para os arquivos dos capítulos');
         });
 
-        // ========== NAVEGAÇÃO POR TECLADO ==========
+        // ========== NAVEGAÇÃO POR TECLADO (opcional) ==========
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && document.getElementById('constructionContainer').classList.contains('active')) {
-                returnToCover();
-            }
-            
-            // Navegação numérica rápida (opcional)
-            if (e.key >= '0' && e.key <= '9' && !document.getElementById('constructionContainer').classList.contains('active')) {
+            // Navegação numérica rápida
+            if (e.key >= '0' && e.key <= '9') {
                 const chapterNum = e.key === '0' ? '00' : e.key.padStart(2, '0');
                 const chapter = chapters.find(c => c.number === chapterNum);
                 if (chapter) {
-                    showConstructionPage(chapter);
+                    window.location.href = chapter.file;
                 }
             }
         });
-
-        // ========== INSTRUÇÕES PARA ATUALIZAÇÃO ==========
-        /*
-        COMO ATUALIZAR OS LINKS NO FUTURO:
-        
-        1. Para cada capítulo no array 'chapters', substitua as URLs em 'links':
-        
-        Exemplo:
-        { 
-          number: "01", 
-          title: "Origem da Vida", 
-          icon: "🌋",
-          links: {
-            github: "https://github.com/seu-usuario/origem-da-vida",
-            google: "https://seu-site.com/capitulo-01"
-          }
-        }
-        
-        2. Você pode manter apenas um link se preferir
-        
-        3. Para links externos, use '_blank' no window.open() se quiser nova aba
-        
-        4. Para conteúdo interno, você pode criar funções específicas
-        
-        O sistema está pronto para sua personalização!
-        */
     </script>
 </body>
 </html>
